@@ -1,3 +1,4 @@
+import { impersonateAccount } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { ethers } from "hardhat";
 const helpers = require("@nomicfoundation/hardhat-network-helpers");
 
@@ -29,6 +30,7 @@ async function main() {
     console.log("USDC Balance  before transaction : :" ,usdc_Balance );
     console.log("Dai Balance  before transaction : :" ,dai_Balance);
     USDC_Contract.approve(ROUTER,USDC_AMOUNT);
+    USDC_Contract.approve(ROUTER,DAI_AMOUNNT);
     await ROUTER.swapTokensForExactTokens(
         USDC_AMOUNT,
         DAI_AMOUNNT,
@@ -42,6 +44,12 @@ async function main() {
 
     console.log("usdc balance after" ,usdcBalAfter);
     console.log("Dai balance after", daiBalAfter);
+
+   
+    
+
+    
+    
 //    console.log("USDC Balance  after transaction : :" ,usdc_Balance );
   //  console.log("Dai Balance  after transaction : :" ,dai_Balance);
 }
